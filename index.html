@@ -1,80 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Happy Birthday Bauni 🎂</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Birthday Bauni 🎉</title>
+
   <style>
     body {
       margin: 0;
       font-family: 'Poppins', sans-serif;
-      background: linear-gradient(135deg, #ffd6e8, #fff3cd);
-      color: #333;
+      background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      color: #fff;
+    }
+
+    .intro {
       text-align: center;
-      overflow-x: hidden;
+      animation: fadeIn 2s ease-in-out;
     }
 
     h1 {
-      font-size: 3rem;
-      color: #ff4d6d;
-      margin-top: 60px;
-      animation: fadeInDown 1.5s ease;
+      font-family: 'Dancing Script', cursive;
+      font-size: 3em;
+      text-shadow: 0 0 20px #fff;
+      animation: glow 2s ease-in-out infinite alternate;
     }
 
-    p {
-      width: 80%;
-      margin: 20px auto;
-      font-size: 1.2rem;
-      color: #555;
-      line-height: 1.6;
-      animation: fadeIn 2s ease;
+    @keyframes glow {
+      from { text-shadow: 0 0 10px #fff, 0 0 20px #ff6ec7, 0 0 30px #ff9; }
+      to { text-shadow: 0 0 20px #fff, 0 0 30px #ff4ec7, 0 0 40px #ffc; }
     }
 
-    .gallery {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 15px;
-      margin: 40px 0;
-      animation: fadeInUp 2s ease;
+    .btn {
+      margin-top: 30px;
+      padding: 12px 24px;
+      font-size: 1.2em;
+      background: #fff;
+      color: #ff5fa2;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+      transition: transform 0.2s;
     }
 
-    .gallery img {
-      width: 250px;
-      height: 250px;
+    .btn:hover {
+      transform: scale(1.1);
+    }
+
+    .slideshow {
+      display: none;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      overflow: hidden;
+      background: #000;
+    }
+
+    .slide {
+      position: absolute;
+      width: 100%;
+      height: 100%;
       object-fit: cover;
-      border-radius: 15px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-      transition: transform 0.3s;
+      opacity: 0;
+      transition: opacity 1.5s ease-in-out, transform 2s ease-in-out;
     }
 
-    .gallery img:hover {
+    .active {
+      opacity: 1;
       transform: scale(1.05);
     }
 
-    .music-btn {
-      background: #ff4d6d;
-      color: white;
-      padding: 12px 25px;
-      border: none;
-      border-radius: 30px;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-
-    .music-btn:hover {
-      background: #ff1e4d;
-    }
-
-    @keyframes fadeInDown {
-      from { opacity: 0; transform: translateY(-30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
+    .message {
+      position: absolute;
+      bottom: 60px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80%;
+      text-align: center;
+      font-size: 1.3em;
+      line-height: 1.6;
+      color: #fff;
+      text-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+      animation: fadeIn 3s ease-in-out forwards;
+      opacity: 0;
     }
 
     @keyframes fadeIn {
@@ -83,30 +98,64 @@
     }
   </style>
 </head>
+
 <body>
-
-  <h1>🎉 HAPPY BIRTHDAY BAUNI 🎂</h1>
-  <p>Some people make life brighter just by being in it — and you, Bauni, are one of them. Your smile can light up even the dullest days, and your energy makes every moment unforgettable. On this special day, I just want you to know how amazing you are — not just today, but every single day. Keep laughing, keep shining, and never forget how loved and appreciated you are. You deserve all the happiness this world can give. Happy birthday, Bauni! 💫❤️</p>
-
-  <button class="music-btn" onclick="playMusic()">🎶 Play Music</button>
-  <audio id="bg-music" src="Dance Like Harrdy Sandhu 128 Kbps.mp3"></audio>
-
-  <div class="gallery">
-    <img src="IMG-20251019-WA0001.jpg" alt="Bauni 1">
-    <img src="IMG-20251019-WA0002.jpg" alt="Bauni 2">
-    <img src="IMG-20251019-WA0003.jpg" alt="Bauni 3">
-    <img src="IMG-20251019-WA0004.jpg" alt="Bauni 4">
-    <img src="IMG-20251019-WA0005.jpg" alt="Bauni 5">
-    <img src="IMG-20251019-WA0006.jpg" alt="Bauni 6">
-    <img src="IMG-20251019-WA0008.jpg" alt="Bauni 7">
-    <img src="IMG-20251019-WA0011.jpg" alt="Bauni 8">
-    <img src="IMG-20251019-WA0013.jpg" alt="Bauni 9">
+  <!-- Intro screen -->
+  <div class="intro" id="intro">
+    <h1>🎉 HAPPY BIRTHDAY BAUNI 🎂</h1>
+    <button class="btn" onclick="startShow()">Play Music 🎵</button>
   </div>
 
+  <!-- Slideshow -->
+  <div class="slideshow" id="slideshow">
+    <img class="slide active" src="IMG-20251019-WA0001.jpg" />
+    <img class="slide" src="IMG-20251019-WA0002.jpg" />
+    <img class="slide" src="IMG-20251019-WA0003.jpg" />
+    <img class="slide" src="IMG-20251019-WA0004.jpg" />
+    <img class="slide" src="IMG-20251019-WA0005.jpg" />
+    <img class="slide" src="IMG-20251019-WA0006.jpg" />
+    <img class="slide" src="IMG-20251019-WA0008.jpg" />
+    <img class="slide" src="IMG-20251019-WA0011.jpg" />
+    <img class="slide" src="IMG-20251019-WA0013.jpg" />
+
+    <div class="message" id="message">
+      <p>
+        Wishing you the most wonderful birthday, Bauni! 💖  
+        May your day be filled with love, laughter, and endless joy.  
+        You bring happiness to everyone around you —  
+        today’s your special day, so smile brighter than ever! 🌸  
+        Have an unforgettable year ahead. 🎂✨
+      </p>
+    </div>
+  </div>
+
+  <audio id="music" src="Dance Like Harrdy Sandhu.mp3"></audio>
+
   <script>
-    function playMusic() {
-      const music = document.getElementById('bg-music');
+    const music = document.getElementById('music');
+    const intro = document.getElementById('intro');
+    const slideshow = document.getElementById('slideshow');
+    const slides = document.querySelectorAll('.slide');
+    const message = document.getElementById('message');
+    let current = 0;
+
+    function startShow() {
       music.play();
+      intro.style.display = 'none';
+      slideshow.style.display = 'block';
+      startSlideshow();
+    }
+
+    function startSlideshow() {
+      setInterval(() => {
+        slides[current].classList.remove('active');
+        current = (current + 1) % slides.length;
+        slides[current].classList.add('active');
+      }, 3000);
+
+      setTimeout(() => {
+        message.style.opacity = '1';
+      }, 4000);
     }
   </script>
 </body>
